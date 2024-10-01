@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
-
-namespace ClinicManagement.Api.Hubs
+﻿namespace ClinicManagement.Api.Hubs
 {
   //public class ClinicManagementHub : Hub
   //{

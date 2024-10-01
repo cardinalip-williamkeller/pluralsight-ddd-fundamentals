@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
@@ -17,9 +17,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ClinicManagement.Core\ClinicManagement.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\AggregatesEntities\" />
+    <ProjectReference Include="..\..\src\ClinicManagement.Domain\ClinicManagement.Domain.csproj" />
   </ItemGroup>
 </Project>

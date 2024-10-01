@@ -1,4 +1,4 @@
-﻿using ClinicManagement.Core.Interfaces;
+﻿using ClinicManagement.Domain.Interfaces;
 using ClinicManagement.Infrastructure.Messaging;
 using MassTransit;
 using Microsoft.Extensions.Configuration;

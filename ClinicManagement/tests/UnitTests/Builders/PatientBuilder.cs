@@ -1,5 +1,5 @@
-﻿using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.ValueObjects;
+﻿using ClinicManagement.Domain.Aggregates.ClientAggregate;
+using ClinicManagement.Domain.ValueObjects;
 
 namespace UnitTests.Builders
 {
@@ -32,7 +32,7 @@ namespace UnitTests.Builders
         Name = "Test Patient",
         Sex = "MALE"
       };
-      _patient.AnimalType = new AnimalType("Cat", "Mixed");
+      _patient.AnimalValueObject = new AnimalValueObject("Cat", "Mixed");
 
       return this;
     }

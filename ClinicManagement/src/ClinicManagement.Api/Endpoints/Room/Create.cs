@@ -1,21 +1,20 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Room;
-using ClinicManagement.Core.Aggregates;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.RoomEndpoints
+namespace ClinicManagement.Api.Endpoints.Room
 {
   public class Create : Endpoint<CreateRoomRequest, CreateRoomResponse>
   {
-    private readonly IRepository<Room> _repository;
+    private readonly IRepository<Domain.Aggregates.RoomAggregate.Room> _repository;
     private readonly IMapper _mapper;
 
-    public Create(IRepository<Room> repository, IMapper mapper)
+    public Create(IRepository<Domain.Aggregates.RoomAggregate.Room> repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;
@@ -36,7 +35,7 @@ namespace ClinicManagement.Api.RoomEndpoints
     {
       var response = new CreateRoomResponse(request.CorrelationId);
 
-      var toAdd = _mapper.Map<Room>(request);
+      var toAdd = _mapper.Map<Domain.Aggregates.RoomAggregate.Room>(request);
       toAdd = await _repository.AddAsync(toAdd);
 
       var dto = _mapper.Map<RoomDto>(toAdd);

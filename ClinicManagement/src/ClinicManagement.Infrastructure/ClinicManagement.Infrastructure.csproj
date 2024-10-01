@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.ObjectPool" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClinicManagement.Core\ClinicManagement.Core.csproj" />
+    <ProjectReference Include="..\ClinicManagement.BlazorShared\ClinicManagement.BlazorShared.csproj" />
+    <ProjectReference Include="..\ClinicManagement.Domain\ClinicManagement.Domain.csproj" />
   </ItemGroup>
 </Project>

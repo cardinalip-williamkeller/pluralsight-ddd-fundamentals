@@ -1,5 +1,5 @@
 ﻿using System;
-using ClinicManagement.Core.Interfaces;
+using ClinicManagement.Domain.Interfaces;
 
 namespace ClinicManagement.Api
 {

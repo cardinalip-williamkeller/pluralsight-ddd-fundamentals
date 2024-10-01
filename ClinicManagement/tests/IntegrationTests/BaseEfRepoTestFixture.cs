@@ -1,4 +1,5 @@
 ﻿using ClinicManagement.Infrastructure.Data;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using MediatR;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;

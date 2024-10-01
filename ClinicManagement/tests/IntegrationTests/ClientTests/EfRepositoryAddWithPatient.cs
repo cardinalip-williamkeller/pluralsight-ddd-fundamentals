@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using ClinicManagement.Infrastructure.Data;
+using ClinicManagement.Domain.Aggregates.ClientAggregate;
+using ClinicManagement.Domain.Specifications.Client;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using UnitTests.Builders;
 using Xunit;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.Specifications;
 
 namespace IntegrationTests.ClientTests
 {

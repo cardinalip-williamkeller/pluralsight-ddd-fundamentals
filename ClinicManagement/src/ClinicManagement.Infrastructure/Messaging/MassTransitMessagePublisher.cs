@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Ardalis.GuardClauses;
-using ClinicManagement.Core.Interfaces;
+using ClinicManagement.Domain.Interfaces;
 using MassTransit;
 
 namespace ClinicManagement.Infrastructure.Messaging;

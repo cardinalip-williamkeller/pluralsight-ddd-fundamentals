@@ -19,7 +19,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ClinicManagement.Core\ClinicManagement.Core.csproj" />
+    <ProjectReference Include="..\..\src\ClinicManagement.Domain\ClinicManagement.Domain.csproj" />
     <ProjectReference Include="..\..\src\ClinicManagement.Infrastructure\ClinicManagement.Infrastructure.csproj" />
     <ProjectReference Include="..\UnitTests\UnitTests.csproj" />
   </ItemGroup>

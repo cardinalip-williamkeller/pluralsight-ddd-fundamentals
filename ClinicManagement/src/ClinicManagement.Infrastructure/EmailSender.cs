@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 using System.Threading.Tasks;
-using ClinicManagement.Core.Interfaces;
+using ClinicManagement.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace ClinicManagement.Infrastructure
@@ -12,6 +12,24 @@ namespace ClinicManagement.Infrastructure
     public EmailSender(ILogger<EmailSender> logger)
     {
       _logger = logger;
+    }
+
+    public void Test() { }
+
+    public void Test2()
+    {
+      ;
+    }
+
+    public void Test3()
+    {
+      //todo: implement
+
+    }
+
+    public void Test4()
+    {
+      
     }
 
     public async Task SendEmailAsync(string to, string from, string subject, string body)

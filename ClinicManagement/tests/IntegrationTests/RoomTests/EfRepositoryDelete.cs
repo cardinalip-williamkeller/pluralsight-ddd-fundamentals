@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using ClinicManagement.Infrastructure.Data;
+using ClinicManagement.Domain.Aggregates.RoomAggregate;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using UnitTests.Builders;
 using Xunit;
-using ClinicManagement.Core.Aggregates;
 
 namespace IntegrationTests.RoomTests
 {

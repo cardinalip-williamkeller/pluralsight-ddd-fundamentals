@@ -1,4 +1,4 @@
-﻿using ClinicManagement.Core.Aggregates;
+﻿using ClinicManagement.Domain.Aggregates.ClientAggregate;
 
 namespace UnitTests.Builders
 {

@@ -1,8 +1,5 @@
-﻿using System.Threading.Tasks;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Infrastructure.Data;
-using UnitTests.Builders;
-using Xunit;
+﻿using ClinicManagement.Domain.Aggregates.ClientAggregate;
+using ClinicManagement.Infrastructure.Repositories.Base;
 
 namespace IntegrationTests.PatientTests
 {
@@ -24,18 +21,18 @@ namespace IntegrationTests.PatientTests
     //  var patient = await AddPatient(id);
 
     //  patient.UpdateName(name);
-    //  await _repository.UpdateAsync<FrontDesk.Core.Aggregates.Patient, int>(patient);
+    //  await _repository.UpdateAsync<FrontDesk.Domain.Aggregates.Patient, int>(patient);
 
-    //  var updatedPatient = await _repository.GetByIdAsync<FrontDesk.Core.Aggregates.Patient, int>(id);
+    //  var updatedPatient = await _repository.GetByIdAsync<FrontDesk.Domain.Aggregates.Patient, int>(id);
 
     //  Assert.Equal(name, updatedPatient.Name);
     //}
 
-    //private async Task<FrontDesk.Core.Aggregates.Patient> AddPatient(int id)
+    //private async Task<FrontDesk.Domain.Aggregates.Patient> AddPatient(int id)
     //{
     //  var patient = new PatientBuilder().Id(id).Build();
 
-    //  await _repository.AddAsync<FrontDesk.Core.Aggregates.Patient, int>(patient);
+    //  await _repository.AddAsync<FrontDesk.Domain.Aggregates.Patient, int>(patient);
 
     //  return patient;
     //}

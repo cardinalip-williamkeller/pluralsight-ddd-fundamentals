@@ -2,7 +2,7 @@
 
 namespace ClinicManagement.Infrastructure.Data.Migrations
 {
-    public partial class Initial : Migration
+  public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,8 +73,8 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                     ClientId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sex = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AnimalType_Species = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    AnimalType_Breed = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AnimalValueObject_Species = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AnimalValueObject_Breed = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     PreferredDoctorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

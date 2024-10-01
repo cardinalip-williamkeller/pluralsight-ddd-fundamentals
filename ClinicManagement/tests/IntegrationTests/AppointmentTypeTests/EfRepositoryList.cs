@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Infrastructure.Data;
+using ClinicManagement.Domain.Aggregates.AppointmentAggregate;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using UnitTests.Builders;
 using Xunit;
 

@@ -1,4 +1,4 @@
-﻿using ClinicManagement.Core.Aggregates;
+﻿using ClinicManagement.Domain.Aggregates.ClientAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,13 +11,13 @@ namespace ClinicManagement.Infrastructure.Data.Config
       builder
         .ToTable("Patients").HasKey(k => k.Id);
       builder
-        .OwnsOne(p => p.AnimalType, p =>
+        .OwnsOne(p => p.AnimalValueObject, p =>
         {
-          p.Property(pp => pp.Breed).HasColumnName("AnimalType_Breed").HasMaxLength(50);
-          p.Property(pp => pp.Species).HasColumnName("AnimalType_Species").HasMaxLength(50);
+          p.Property(pp => pp.Breed).HasColumnName("AnimalValueObject_Breed").HasMaxLength(50);
+          p.Property(pp => pp.Species).HasColumnName("AnimalValueObject_Species").HasMaxLength(50);
         });
 
-      builder.Metadata.FindNavigation(nameof(Patient.AnimalType))
+      builder.Metadata.FindNavigation(nameof(Patient.AnimalValueObject))
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
   }

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Infrastructure.Data;
+using ClinicManagement.Domain.Aggregates.ClientAggregate;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using UnitTests.Builders;
 using Xunit;
 
@@ -27,7 +27,7 @@ namespace IntegrationTests.ClientTests
       Assert.True(newClient?.Id == id);
     }
 
-    private async Task<ClinicManagement.Core.Aggregates.Client> AddClient(int id)
+    private async Task<Client> AddClient(int id)
     {
       var client = new ClientBuilder().Id(id).Build();
 

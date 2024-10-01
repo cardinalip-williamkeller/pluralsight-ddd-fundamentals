@@ -4,7 +4,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
-namespace ClinicManagement.Api.ConfigurationEndpoints
+namespace ClinicManagement.Api.Endpoints.Configuration
 {
   public class Read : Endpoint<EmptyRequest, string>
   {

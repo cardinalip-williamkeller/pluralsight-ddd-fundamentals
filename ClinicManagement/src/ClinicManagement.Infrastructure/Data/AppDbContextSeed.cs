@@ -6,8 +6,11 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using BlazorShared.Models.AppointmentType;
 using BlazorShared.Models.Room;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.ValueObjects;
+using ClinicManagement.Domain.Aggregates.AppointmentAggregate;
+using ClinicManagement.Domain.Aggregates.ClientAggregate;
+using ClinicManagement.Domain.Aggregates.DoctorAggregate;
+using ClinicManagement.Domain.Aggregates.RoomAggregate;
+using ClinicManagement.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -183,14 +186,14 @@ namespace ClinicManagement.Infrastructure.Data
         Name = "Arya",
         Sex = FEMALE_SEX,
         PreferredDoctorId = drWho.Id,
-        AnimalType = new AnimalType("Cat", "Feral") });
+        AnimalValueObject = new AnimalValueObject("Cat", "Feral") });
       clientSmith.Patients.Add(new Patient
       {
         ClientId = 1,
         Name = "Rosie",
         Sex = FEMALE_SEX,
         PreferredDoctorId = drWho.Id,
-        AnimalType = new AnimalType("Dog", "Golden Retriever")
+        AnimalValueObject = new AnimalValueObject("Dog", "Golden Retriever")
       });
 
       clientGraphs.Add(clientSmith);
@@ -228,7 +231,7 @@ namespace ClinicManagement.Infrastructure.Data
         int doctorId,
         string patient1Sex,
         string patient1Name,
-        string animalType,
+        string AnimalValueObject,
         string breed)
     {
       var client = new Client(fullName, preferredName, salutation, doctorId, "client@example.com");
@@ -238,7 +241,7 @@ namespace ClinicManagement.Infrastructure.Data
         ClientId = 1,
         Name = patient1Name,
         Sex = patient1Sex,
-        AnimalType = new AnimalType(animalType, breed),
+        AnimalValueObject = new AnimalValueObject(AnimalValueObject, breed),
         PreferredDoctorId = doctorId
       };
       client.Patients.Add(patient);

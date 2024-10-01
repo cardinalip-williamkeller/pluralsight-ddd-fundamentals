@@ -2,14 +2,13 @@
 using System.Reflection;
 using BlazorShared;
 using ClinicManagement.Api;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.Interfaces;
+using ClinicManagement.Domain.Aggregates.RoomAggregate;
+using ClinicManagement.Domain.Interfaces;
 using ClinicManagement.Infrastructure;
 using ClinicManagement.Infrastructure.Data;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +33,7 @@ builder.Configuration.Bind(BaseUrlConfiguration.CONFIG_NAME, baseUrlConfig);
 
 builder.Services.AddCors(options =>
 {
-  options.AddPolicy(name: CORS_POLICY,
+  options.AddPolicy(name: ClinicManagement.Api.Program.CORS_POLICY,
                           builder =>
                           {
                             builder.WithOrigins(baseUrlConfig.WebBase.Replace("host.docker.internal", "localhost").TrimEnd('/'), "localhost:6100", "localhost:6150");
@@ -53,7 +52,7 @@ builder.Services
       s.Title = "My API V1";
     };
   });
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(ClinicManagement.Api.Program).Assembly));
 
 builder.Services.AddResponseCompression(opts =>
 {
@@ -61,7 +60,7 @@ builder.Services.AddResponseCompression(opts =>
             new[] { "application/octet-stream" });
 });
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(ClinicManagement.Api.Program).Assembly);
 
 builder.Services.AddMessaging(builder.Configuration);
 
@@ -69,7 +68,7 @@ var assemblies = new Assembly[]
 {
   typeof(Room).Assembly,
   typeof(DefaultInfrastructureModule).Assembly,
-  typeof(Program).Assembly,
+  typeof(ClinicManagement.Api.Program).Assembly,
 };
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(assemblies));
 
@@ -93,14 +92,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 
-app.UseCors(CORS_POLICY);
+app.UseCors(ClinicManagement.Api.Program.CORS_POLICY);
 
 app.UseFastEndpoints().UseSwaggerGen();
 //app.MapHub<ClinicManagementHub>($"/{SignalRConstants.HUB_NAME}");
 
 app.Run();
 
-public partial class Program
+namespace ClinicManagement.Api
 {
-  public const string CORS_POLICY = "CorsPolicy";
+  public partial class Program
+  {
+    public const string CORS_POLICY = "CorsPolicy";
+  }
 }

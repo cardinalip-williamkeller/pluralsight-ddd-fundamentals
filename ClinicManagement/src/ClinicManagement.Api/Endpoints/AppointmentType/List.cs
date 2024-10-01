@@ -2,21 +2,20 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.AppointmentType;
-using ClinicManagement.Core.Aggregates;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.AppointmentTypeEndpoints
+namespace ClinicManagement.Api.Endpoints.AppointmentType
 {
   public class List : Endpoint<ListAppointmentTypeRequest, ListAppointmentTypeResponse>
   {
-    private readonly IRepository<AppointmentType> _repository;
+    private readonly IRepository<Domain.Aggregates.AppointmentAggregate.AppointmentType> _repository;
     private readonly IMapper _mapper;
 
-    public List(IRepository<AppointmentType> repository, IMapper mapper)
+    public List(IRepository<Domain.Aggregates.AppointmentAggregate.AppointmentType> repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;

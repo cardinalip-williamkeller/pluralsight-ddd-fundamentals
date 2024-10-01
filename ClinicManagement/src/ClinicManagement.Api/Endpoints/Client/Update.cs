@@ -1,24 +1,23 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Client;
-using ClinicManagement.Contracts;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.Interfaces;
+using ClinicManagement.Domain.IntegrationEvents;
+using ClinicManagement.Domain.Interfaces;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.ClientEndpoints
+namespace ClinicManagement.Api.Endpoints.Client
 {
   public class Update : Endpoint<UpdateClientRequest, UpdateClientResponse>
   {
-    private readonly IRepository<Client> _repository;
+    private readonly IRepository<Domain.Aggregates.ClientAggregate.Client> _repository;
     private readonly IMapper _mapper;
     private readonly IMessagePublisher _messagePublisher;
 
-    public Update(IRepository<Client> repository,
+    public Update(IRepository<Domain.Aggregates.ClientAggregate.Client> repository,
       IMapper mapper,
       IMessagePublisher messagePublisher)
     {
@@ -42,7 +41,7 @@ namespace ClinicManagement.Api.ClientEndpoints
     {
       var response = new UpdateClientResponse(request.CorrelationId);
 
-      var toUpdate = _mapper.Map<Client>(request);
+      var toUpdate = _mapper.Map<Domain.Aggregates.ClientAggregate.Client>(request);
       await _repository.UpdateAsync(toUpdate);
 
       var dto = _mapper.Map<ClientDto>(toUpdate);

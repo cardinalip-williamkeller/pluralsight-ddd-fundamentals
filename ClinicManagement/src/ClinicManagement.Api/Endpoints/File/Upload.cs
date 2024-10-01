@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace ClinicManagement.Api.FileEndpoints
+namespace ClinicManagement.Api.Endpoints.File
 {
   public class Upload : Endpoint<FileItem, Results<Ok<bool>, BadRequest>>
   {

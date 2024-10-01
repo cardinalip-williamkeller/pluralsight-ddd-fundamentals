@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Doctor;
-using ClinicManagement.Core.Aggregates;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -10,14 +9,14 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.DoctorEndpoints
+namespace ClinicManagement.Api.Endpoints.Doctor
 {
   public class List : Endpoint<ListDoctorRequest, Results<Ok<ListDoctorResponse>, NotFound>>
   {
-    private readonly IRepository<Doctor> _repository;
+    private readonly IRepository<Domain.Aggregates.DoctorAggregate.Doctor> _repository;
     private readonly IMapper _mapper;
 
-    public List(IRepository<Doctor> repository, IMapper mapper)
+    public List(IRepository<Domain.Aggregates.DoctorAggregate.Doctor> repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;

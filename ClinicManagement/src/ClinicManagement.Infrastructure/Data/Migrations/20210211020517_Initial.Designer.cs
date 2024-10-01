@@ -21,7 +21,7 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.AppointmentType", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.AppointmentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                     b.ToTable("AppointmentTypes");
                 });
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.Client", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.Doctor", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.Doctor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                     b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.Patient", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,7 +110,7 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.Room", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,15 +125,15 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.Patient", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.Patient", b =>
                 {
-                    b.HasOne("ClinicManagement.Core.Aggregates.Client", null)
+                    b.HasOne("ClinicManagement.Domain.Aggregates.Client", null)
                         .WithMany("Patients")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("ClinicManagement.Core.ValueObjects.AnimalType", "AnimalType", b1 =>
+                    b.OwnsOne("ClinicManagement.Domain.ValueObjects.AnimalValueObject", "AnimalValueObject", b1 =>
                         {
                             b1.Property<int>("PatientId")
                                 .ValueGeneratedOnAdd()
@@ -143,12 +143,12 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                             b1.Property<string>("Breed")
                                 .HasMaxLength(50)
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("AnimalType_Breed");
+                                .HasColumnName("AnimalValueObject_Breed");
 
                             b1.Property<string>("Species")
                                 .HasMaxLength(50)
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("AnimalType_Species");
+                                .HasColumnName("AnimalValueObject_Species");
 
                             b1.HasKey("PatientId");
 
@@ -158,10 +158,10 @@ namespace ClinicManagement.Infrastructure.Data.Migrations
                                 .HasForeignKey("PatientId");
                         });
 
-                    b.Navigation("AnimalType");
+                    b.Navigation("AnimalValueObject");
                 });
 
-            modelBuilder.Entity("ClinicManagement.Core.Aggregates.Client", b =>
+            modelBuilder.Entity("ClinicManagement.Domain.Aggregates.Client", b =>
                 {
                     b.Navigation("Patients");
                 });

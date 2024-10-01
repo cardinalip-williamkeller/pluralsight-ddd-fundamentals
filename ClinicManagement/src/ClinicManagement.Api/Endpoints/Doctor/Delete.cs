@@ -1,21 +1,20 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Doctor;
-using ClinicManagement.Core.Aggregates;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.DoctorEndpoints
+namespace ClinicManagement.Api.Endpoints.Doctor
 {
   public class Delete : Endpoint<DeleteDoctorRequest, DeleteDoctorResponse>
   {
-    private readonly IRepository<Doctor> _repository;
+    private readonly IRepository<Domain.Aggregates.DoctorAggregate.Doctor> _repository;
     private readonly IMapper _mapper;
 
-    public Delete(IRepository<Doctor> repository, IMapper mapper)
+    public Delete(IRepository<Domain.Aggregates.DoctorAggregate.Doctor> repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;
@@ -36,7 +35,7 @@ namespace ClinicManagement.Api.DoctorEndpoints
     {
       var response = new DeleteDoctorResponse(request.CorrelationId);
 
-      var toDelete = new Doctor(request.Id, "to delete");
+      var toDelete = new Domain.Aggregates.DoctorAggregate.Doctor(request.Id, "to delete");
       await _repository.DeleteAsync(toDelete);
 
       return response;

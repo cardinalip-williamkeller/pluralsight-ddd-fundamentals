@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Ardalis.HttpClientTestExtensions;
 using BlazorShared.Models.Client;
+using ClinicManagement.Api;
 using Xunit;
 using Xunit.Abstractions;
 

@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using ClinicManagement.Infrastructure.Data;
+﻿using System.Threading.Tasks;
+using ClinicManagement.Domain.Aggregates.RoomAggregate;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using UnitTests.Builders;
 using Xunit;
-using ClinicManagement.Core.Aggregates;
 
 
 namespace IntegrationTests.RoomTests
@@ -27,7 +26,7 @@ namespace IntegrationTests.RoomTests
       Assert.True(rooms?.Count > 0);
     }
 
-    private async Task<ClinicManagement.Core.Aggregates.Room> AddRoom()
+    private async Task<Room> AddRoom()
     {
       var room = new RoomBuilder().Id(7).Build();
 

@@ -1,5 +1,6 @@
-﻿using ClinicManagement.Core.Interfaces;
+﻿using ClinicManagement.Domain.Interfaces;
 using ClinicManagement.Infrastructure.Data;
+using ClinicManagement.Infrastructure.Repositories.Base;
 using Microsoft.Extensions.DependencyInjection;
 using PluralsightDdd.SharedKernel.Interfaces;
 

@@ -1,9 +1,5 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Infrastructure.Data;
-using UnitTests.Builders;
-using Xunit;
+﻿using ClinicManagement.Domain.Aggregates.ClientAggregate;
+using ClinicManagement.Infrastructure.Repositories.Base;
 
 namespace IntegrationTests.PatientTests
 {
@@ -21,16 +17,16 @@ namespace IntegrationTests.PatientTests
     //{
     //  await AddPatient();
 
-    //  var patients = (await _repository.ListAsync<FrontDesk.Core.Aggregates.Patient, int>()).ToList();
+    //  var patients = (await _repository.ListAsync<FrontDesk.Domain.Aggregates.Patient, int>()).ToList();
 
     //  Assert.True(patients?.Count > 0);
     //}
 
-    //private async Task<FrontDesk.Core.Aggregates.Patient> AddPatient()
+    //private async Task<FrontDesk.Domain.Aggregates.Patient> AddPatient()
     //{
     //  var patient = new PatientBuilder().Id(7).Build();
 
-    //  await _repository.AddAsync<FrontDesk.Core.Aggregates.Patient, int>(patient);
+    //  await _repository.AddAsync<FrontDesk.Domain.Aggregates.Patient, int>(patient);
 
     //  return patient;
     //}

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BlazorShared.Models.AppointmentType;
-using ClinicManagement.Core.Aggregates;
+using ClinicManagement.Domain.Aggregates.AppointmentAggregate;
 
 namespace ClinicManagement.Api.MappingProfiles
 {

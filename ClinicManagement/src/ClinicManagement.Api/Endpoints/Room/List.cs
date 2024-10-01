@@ -2,8 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Room;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.Specifications;
+using ClinicManagement.Domain.Specifications.Room;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -11,14 +10,14 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.RoomEndpoints
+namespace ClinicManagement.Api.Endpoints.Room
 {
   public class List : Endpoint<ListRoomRequest, Results<Ok<ListRoomResponse>, NotFound>>
   {
-    private readonly IRepository<Room> _repository;
+    private readonly IRepository<Domain.Aggregates.RoomAggregate.Room> _repository;
     private readonly IMapper _mapper;
 
-    public List(IRepository<Room> repository,
+    public List(IRepository<Domain.Aggregates.RoomAggregate.Room> repository,
       IMapper mapper)
     {
       _repository = repository;
@@ -40,7 +39,7 @@ namespace ClinicManagement.Api.RoomEndpoints
     {
       var response = new ListRoomResponse(request.CorrelationId);
 
-      var roomSpec = new RoomSpecification();
+      var roomSpec = new RoomSpec();
       var rooms = await _repository.ListAsync(roomSpec);
       if (rooms is null) return TypedResults.NotFound();
 

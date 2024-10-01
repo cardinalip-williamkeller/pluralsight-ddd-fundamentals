@@ -1,21 +1,20 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Room;
-using ClinicManagement.Core.Aggregates;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.RoomEndpoints
+namespace ClinicManagement.Api.Endpoints.Room
 {
   public class Delete : Endpoint<DeleteRoomRequest, DeleteRoomResponse>
   {
-    private readonly IRepository<Room> _repository;
+    private readonly IRepository<Domain.Aggregates.RoomAggregate.Room> _repository;
     private readonly IMapper _mapper;
 
-    public Delete(IRepository<Room> repository, IMapper mapper)
+    public Delete(IRepository<Domain.Aggregates.RoomAggregate.Room> repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;
@@ -36,7 +35,7 @@ namespace ClinicManagement.Api.RoomEndpoints
     {
       var response = new DeleteRoomResponse(request.CorrelationId);
 
-      var toDelete = _mapper.Map<Room>(request);
+      var toDelete = _mapper.Map<Domain.Aggregates.RoomAggregate.Room>(request);
       await _repository.DeleteAsync(toDelete);
 
       return response;

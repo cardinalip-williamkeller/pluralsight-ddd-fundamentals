@@ -1,9 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Doctor;
-using ClinicManagement.Contracts;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.Interfaces;
+using ClinicManagement.Domain.IntegrationEvents;
+using ClinicManagement.Domain.Interfaces;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -11,16 +10,16 @@ using Microsoft.Extensions.Logging;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.DoctorEndpoints
+namespace ClinicManagement.Api.Endpoints.Doctor
 {
   public class Create : Endpoint<CreateDoctorRequest, CreateDoctorResponse>
   {
-    private readonly IRepository<Doctor> _repository;
+    private readonly IRepository<Domain.Aggregates.DoctorAggregate.Doctor> _repository;
     private readonly IMapper _mapper;
     private readonly IMessagePublisher _messagePublisher;
     private readonly ILogger<Create> _logger;
 
-    public Create(IRepository<Doctor> repository,
+    public Create(IRepository<Domain.Aggregates.DoctorAggregate.Doctor> repository,
       IMapper mapper,
       IMessagePublisher messagePublisher,
       ILogger<Create> logger)
@@ -46,7 +45,7 @@ namespace ClinicManagement.Api.DoctorEndpoints
     {
       var response = new CreateDoctorResponse(request.CorrelationId);
 
-      var toAdd = _mapper.Map<Doctor>(request);
+      var toAdd = _mapper.Map<Domain.Aggregates.DoctorAggregate.Doctor>(request);
       toAdd = await _repository.AddAsync(toAdd);
 
       var dto = _mapper.Map<DoctorDto>(toAdd);

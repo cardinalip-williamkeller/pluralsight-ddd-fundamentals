@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BlazorShared.Models.Doctor;
-using ClinicManagement.Core.Aggregates;
+using ClinicManagement.Domain.Aggregates.DoctorAggregate;
 
 namespace ClinicManagement.Api.MappingProfiles
 {

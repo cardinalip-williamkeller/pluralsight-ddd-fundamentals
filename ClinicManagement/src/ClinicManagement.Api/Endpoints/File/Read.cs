@@ -13,7 +13,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Processing;
 
-namespace ClinicManagement.Api.FileEndpoints
+namespace ClinicManagement.Api.Endpoints.File
 {
   public class Read : Endpoint<ReadFileRequest, Results<Ok<FileItem>, BadRequest, NotFound>>
   {

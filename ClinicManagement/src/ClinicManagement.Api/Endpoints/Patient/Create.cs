@@ -1,9 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BlazorShared.Models.Patient;
-using ClinicManagement.Core.Aggregates;
-using ClinicManagement.Core.Specifications;
-using ClinicManagement.Core.ValueObjects;
+using ClinicManagement.Domain.Specifications.Client;
+using ClinicManagement.Domain.ValueObjects;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -11,14 +10,14 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using PluralsightDdd.SharedKernel.Interfaces;
 using IMapper = AutoMapper.IMapper;
 
-namespace ClinicManagement.Api.PatientEndpoints
+namespace ClinicManagement.Api.Endpoints.Patient
 {
   public class Create : Endpoint<CreatePatientRequest, Results<Ok<CreatePatientResponse>, NotFound>>
   {
-    private readonly IRepository<Client> _repository;
+    private readonly IRepository<Domain.Aggregates.ClientAggregate.Client> _repository;
     private readonly IMapper _mapper;
 
-    public Create(IRepository<Client> repository, IMapper mapper)
+    public Create(IRepository<Domain.Aggregates.ClientAggregate.Client> repository, IMapper mapper)
     {
       _repository = repository;
       _mapper = mapper;
@@ -44,11 +43,11 @@ namespace ClinicManagement.Api.PatientEndpoints
       if (client == null) return TypedResults.NotFound();
 
       // right now we only add huskies
-      var newPatient = new Patient
+      var newPatient = new Domain.Aggregates.ClientAggregate.Patient
       {
         ClientId = client.Id,
         Name = request.PatientName,
-        AnimalType = new AnimalType("Dog", "Husky")
+        AnimalValueObject = new AnimalValueObject("Dog", "Husky")
       };
       client.Patients.Add(newPatient);
 
