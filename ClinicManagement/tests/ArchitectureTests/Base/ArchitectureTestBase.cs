@@ -23,7 +23,6 @@ public abstract class ArchitectureTestBase
       Assembly.Load("ClinicManagement.BlazorShared"),
       Assembly.Load("ClinicManagement.Domain"),
       Assembly.Load("ClinicManagement.Infrastructure"),
-      Assembly.Load("ClinicManagement.JustAnotherProject"),
     })
     .Build();
 }

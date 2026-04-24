@@ -1,0 +1,25 @@
+---
+description: Naming, visibility, and namespace conventions for domain interfaces
+globs: **/Domain/Interfaces/**/*.cs
+alwaysApply: false
+---
+
+# Domain Interface Conventions
+
+- Interfaces must be `public`.
+- Names must start with the `I` prefix (e.g. `IAppointmentRepository`).
+- Must reside in the `*.Domain.Interfaces` namespace (or a child namespace).
+
+```csharp
+// GOOD
+namespace ClinicManagement.Domain.Interfaces;
+
+public interface IAppointmentRepository { }
+```
+
+```csharp
+// BAD — missing prefix, wrong visibility
+namespace ClinicManagement.Domain.Interfaces;
+
+internal interface AppointmentRepository { }
+```

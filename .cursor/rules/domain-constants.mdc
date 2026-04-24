@@ -1,0 +1,28 @@
+---
+description: Naming, visibility, and namespace conventions for domain constant classes
+globs: **/Domain/Constants/**/*.cs
+alwaysApply: false
+---
+
+# Domain Constants Conventions
+
+- Classes must be `public`.
+- Class names must end with the suffix `Constants` (e.g. `AppointmentTypeConstants`).
+- Must reside in the `*.Domain.Constants` namespace matching the folder path.
+
+```csharp
+// GOOD
+namespace ClinicManagement.Domain.Constants;
+
+public static class AppointmentTypeConstants
+{
+    public const int MaxNameLength = 100;
+}
+```
+
+```csharp
+// BAD — wrong suffix, wrong visibility
+namespace ClinicManagement.Domain.Constants;
+
+internal static class AppointmentTypes { }
+```

@@ -1,0 +1,35 @@
+---
+description: Naming, equality, and immutability conventions for domain value objects
+globs: **/Domain/ValueObjects/**/*.cs
+alwaysApply: false
+---
+
+# Domain Value Object Conventions
+
+- Class names must end with the suffix `ValueObject` (e.g. `MoneyValueObject`).
+- Must override `GetHashCode()` and `Equals(object)`.
+- Must implement `IEquatable<T>` where `T` is the value object type.
+- Properties must not have public setters — value objects are immutable.
+
+```csharp
+// GOOD
+namespace ClinicManagement.Domain.ValueObjects;
+
+public class MoneyValueObject : ValueObject, IEquatable<MoneyValueObject>
+{
+    public decimal Amount { get; private set; }
+    public string Currency { get; private set; }
+
+    public bool Equals(MoneyValueObject? other) => /* ... */;
+    public override bool Equals(object? obj) => /* ... */;
+    public override int GetHashCode() => /* ... */;
+}
+```
+
+```csharp
+// BAD — public setter, missing suffix, no equality overrides
+public class Money : ValueObject
+{
+    public decimal Amount { get; set; }
+}
+```
