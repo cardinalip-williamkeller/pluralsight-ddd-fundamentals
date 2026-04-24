@@ -1,6 +1,5 @@
 ﻿using ArchitectureTests.Base;
 using ArchUnitNET.NUnit;
-using ClinicManagement.Domain.Aggregates.AppointmentAggregate;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ArchitectureTests;
@@ -35,13 +34,11 @@ public class CleanArchitectureTests : ArchitectureTestBase
 
     var otherProjectsTypes = Types()
       .That()
-      .ResideInNamespace("ClinicManagement.Api")
+      .ResideInNamespace($"{RootApplicationAssemblyName}.Api")
       .Or()
-      .ResideInNamespace("ClinicManagement.BlazorShared")
+      .ResideInNamespace($"{RootApplicationAssemblyName}.BlazorShared")
       .Or()
-      .ResideInNamespace("ClinicManagement.Blazor.Host")
-      .Or()
-      .ResideInNamespace("ClinicManagement.BlazorShared");
+      .ResideInNamespace($"{RootApplicationAssemblyName}.Blazor.Host");
 
     var rule = Types()
       .That()
